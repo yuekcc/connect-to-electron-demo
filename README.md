@@ -7,6 +7,8 @@
 
 相关文档可以看这里：https://www.electronjs.org/docs/latest/tutorial/automated-testing
 
+🚧🚧 有网页自动需求，推荐使用 selenium + chrome 组合，这个只是 demo，用于功能演示 🚧🚧
+
 ## 构建
 
 ```sh
