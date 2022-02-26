@@ -16,13 +16,26 @@ just
 
 ## 部署
 
-基础软件：java11。
+需要安装的软件有 jdk11、electron、electron 对于版本的 webdriver。
 
-windows 平台下像普通应用一样安装即可。
+### Windows
 
-linux 平台需要先配置 Xvfb，需要显示中文时也需要安装相应的字体。linux 平台需要解决 `DISPLAY` 环境变量问题。
+windows 平台下像普通应用一样安装即可。jdk11 可以使用 openjdk 代替。
 
-比如在用这个命令行启动 Xvfb: `Xvfb :1 -ac -screen 0 1980x1080x24&`，那么 `DISPLAY` 应该设置为 `:1`。electron 会显示在 `DISPLAY` 指向的地址（因为 x11 的特性）。在使用 chromedriver 启动时，也需要设置 `DISPLAY` 变量。本地测试的话，可以使用行内变量：`DISPLAY=:1 chromedriver`。
+### Linux
+
+linux 需要 x-window 支持。服务器环境，可以使用 Xvfb。Xvfb 是一个虚拟显示器服务器，将显示结果输出到内存而非显示器。Xvfb 具体安装可以参与网络上的一些文章。部署这个 demo 有几个要点：
+
+- 需要设置 `DISPLAY` 环境变量。`DISPLAY` 变量应于指定输出显示服务器。
+    - 用这个命令行启动 Xvfb: `Xvfb :1 -ac -screen 0 1980x1080x24&`，那么 `DISPLAY` 应该设置为 `:1`，然后再启动这个 demo。
+- 启动 chrome driver 也需要设置 `DISPLAY` 变量。
+- 需要显示中文，需要自行安装中文字体。
+
+本地测试的话，可以使用行内变量：`DISPLAY=:1 chromedriver`。
+
+### macOS
+
+未测试。理论上安装过程像 Windows 系统。
 
 ## License
 
